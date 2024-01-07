@@ -1,0 +1,46 @@
+plugins {
+    id("java")
+    id("org.jetbrains.intellij") version "0.7.3"
+}
+
+patchPluginXml {
+    //注意这个版本号不能高于上面intellij的version,否则runIde会报错
+    sinceBuild = '201'
+    untilBuild = '202.*'
+}
+
+intellij {
+    version = "2020.1"
+    type = "IC"
+}
+
+
+group = "com.qiqv"
+version = "4.0"
+
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/central/'}
+    maven { url 'https://maven.aliyun.com/repository/public/' }
+    maven { url 'https://maven.aliyun.com/repository/google/' }
+    maven { url 'https://maven.aliyun.com/repository/jcenter/'}
+    maven { url 'https://maven.aliyun.com/repository/gradle-plugin'}
+    //    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
+    testRuntimeOnly    'org.junit.jupiter:junit-jupiter-engine:5.9.3'
+    testRuntimeOnly    'org.junit.vintage:junit-vintage-engine:5.9.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.3'
+}
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs += ['-Xlint:unchecked', '-Xlint:deprecation', '-parameters']
+}
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

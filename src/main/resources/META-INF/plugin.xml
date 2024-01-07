@@ -1,0 +1,136 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>cn.ccwcy.FileTemplates</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>文件模板</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="305795074@qq.com">ChaoYi Wu</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>
+        添加了对Spring、SpringMVC、MyBatis、Servlet等框架的配置文件模板，可直接插件修改完成的配置文件。
+    </description>
+
+    <change-notes>
+        <![CDATA[
+            <h2>新增：</h2>
+            <ul>
+                <li>新建resources目录功能</li>
+            </ul>
+            <h2>修复</h2>
+            <ul>
+                <li>包框架默认会替换项目中的目录</li>
+            </ul>
+        ]]>
+    </change-notes>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+
+    </extensions>
+    <actions>
+
+        <!--
+  <group> 元素定义了action group。<action>, <group>和 <separator>元素将被自动包含进该group
+   - "id" (必选) - group的id,唯一
+   - "class" (可选) - 指定group实现类的全限定命名（FQN），如果不配置，将会使用 com.intellij.openapi.actionSystem.DefaultActionGroup
+   - "text" (可选) - group的文本 (显示子菜单中菜单项的文本).
+   - "description" (可选) 当该group获取焦点时，显示的文本
+   - "icon" (可选) - 图标
+   - "popup" (可选) - 配置group在菜单中的显示方式
+      * "true" - group actions放在子菜单中
+      * "false" - 放在当前菜单中，由分隔线分隔.
+   - "compact" (optional) -  compact="true" 时，如果action不可用，则不显示该action
+  -->
+        <group
+                id="TestActionGroup"
+                text="框架配置模板"
+                popup="true">
+
+            <action
+                    id="cn.ccwcy.PackageTemplates"
+                    class="cn.ccwcy.CreatePack"
+                    text="包框架"
+            />
+
+            <!-- action之间的分隔线 -->
+            <separator/>
+
+            <action
+                    id="cn.ccwcy.CreateResourcesPack"
+                    class="cn.ccwcy.CreateResourcesPack"
+                    text="配置目录：'resources'"
+            />
+
+            <action
+                    id="cn.ccwcy.web_xml"
+                    class="cn.ccwcy.web_xml"
+                    text="Web.xml"
+            />
+
+            <action
+                    id="cn.ccwcy.log4j"
+                    class="cn.ccwcy.log4j"
+                    text="Log4j.properties"
+            />
+
+            <action
+                    id="cn.ccwcy.mybatis_config"
+                    class="cn.ccwcy.mybatis_config"
+                    text="MyBatis-Config.xml"
+            />
+
+            <action
+                    id="cn.ccwcy.database_Config"
+                    class="cn.ccwcy.database_Config"
+                    text="DataBase.properties"
+            />
+
+            <action
+                    id="cn.ccwcy.MvcServletWeb"
+                    class="cn.ccwcy.MvcServletWeb"
+                    text="SpringMVC-Servlet.xml"
+            />
+
+            <action
+                    id="cn.ccwcy.applicationContext_MyBatis"
+                    class="cn.ccwcy.applicationContext_MyBatis"
+                    text="ApplicationContext-MyBatis.xml"
+            />
+
+            <!-- action之间的分隔线 -->
+            <separator/>
+
+            <action
+                    id="cn.ccwcy.SpringMVCMyBatis"
+                    class="cn.ccwcy.SpringMVCMyBatis"
+                    text="Spring整合MyBatis共3配置文件"
+            />
+
+            <action
+                    id="cn.ccwcy.FamilyBucket"
+                    class="cn.ccwcy.FamilyBucket"
+                    text="全家桶：上面区域的配置文件直接来一套(不含Web.xml)"
+            />
+
+
+            <add-to-group
+                    group-id="NewGroup"
+                    relative-to-action="NewDir"
+                    anchor="after"/>
+        </group>
+
+
+    </actions>
+</idea-plugin>
