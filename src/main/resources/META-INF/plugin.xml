@@ -14,7 +14,7 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description>
-        添加了对Spring、SpringMVC、MyBatis、Servlet等框架的配置文件模板，可直接插件修改完成的配置文件。
+        The Idea file template plug-in adds configuration file templates for Spring, SpringMVC, MyBatis, Servlet and other frameworks, and the completed configuration files can be directly modified by the plug-in.
     </description>
 
     <change-notes>
